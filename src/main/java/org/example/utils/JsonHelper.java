@@ -24,6 +24,7 @@ public abstract class JsonHelper {
             .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true)
             .configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE, true);
 
+    @SuppressWarnings("unused")
     public static <T> T readJsonFile(String filePath, Class<T> clazz) {
         try {
             return MAPPER.readValue(new File(filePath), clazz);
