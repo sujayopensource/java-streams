@@ -28,7 +28,7 @@ public class Main {
         printVideoGamesByPlatform("Xbox One");
         printFavouritePlatform();
         printVideoGamesReleasedInYear(2017);
-        printVideoGamesReleasedBeforeYear(2010);
+        printVideoGamesReleasedBeforeYear(2000);
         printAveragePlayingHours();
         printShortestGame();
         printMostNominatedGame();

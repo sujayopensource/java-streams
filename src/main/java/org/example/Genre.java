@@ -12,6 +12,7 @@ public enum Genre {
     HACK_AND_SLASH,
     HORROR,
     INDIE,
+    LOCATION_BASED,
     PLATFORM,
     PUZZLE,
     RACING,
