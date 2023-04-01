@@ -1,0 +1,1153 @@
+[
+  {
+    "title": "NieR Automata",
+    "developer": "Square Enix",
+    "platforms": [
+      "Microsoft Windows",
+      "PlayStation 4",
+      "Xbox One"
+    ],
+    "genres": [
+      "ACTION",
+      "ROLE_PLAYING",
+      "SANDBOX"
+    ],
+    "estimatedHours": 21,
+    "releaseDate": "2017-02-23",
+    "nominations": [
+      {
+        "awards": "The game awards",
+        "category": "Best role-playing game",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best narrative",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best soundtrack",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best design",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Innovation",
+        "won": false
+      },
+      {
+        "awards": "Satellite",
+        "category": "Best action/adventure game",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "The witcher 3: Wild hunt",
+    "developer": "CD Projekt RED",
+    "platforms": [
+      "Microsoft Windows",
+      "PlayStation 4",
+      "Nintendo Switch",
+      "Xbox One"
+    ],
+    "genres": [
+      "ACTION",
+      "ADVENTURE",
+      "ROLE_PLAYING"
+    ],
+    "estimatedHours": 51,
+    "releaseDate": "2015-05-19",
+    "nominations": [
+      {
+        "awards": "The game awards",
+        "category": "Game of the year",
+        "won": true
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best role playing game",
+        "won": true
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best narrative",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best soundtrack",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Most anticipated game",
+        "won": true
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best performance",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best art direction",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Audio achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best persistent game",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Artistic achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best performer",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best game",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best story",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Game design",
+        "won": false
+      },
+      {
+        "awards": "Satellite",
+        "category": "Best action/adventure game",
+        "won": false
+      },
+      {
+        "awards": "Empire",
+        "category": "Best video game",
+        "won": false
+      },
+      {
+        "awards": "Annie",
+        "category": "Outstanding achievement for character animation in a video game",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Final Fantasy VII",
+    "developer": "Square Enix",
+    "platforms": [
+      "PlayStation X"
+    ],
+    "genres": [
+      "ROLE_PLAYING"
+    ],
+    "estimatedHours": 33,
+    "releaseDate": "1997-01-31",
+    "nominations": [
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Console adventure game of the year",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Console role playing game of the year",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Interactive title of the year",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in art/graphics",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in interactive design",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Diablo II",
+    "developer": "Blizzard",
+    "platforms": [
+      "Microsoft Windows"
+    ],
+    "genres": [
+      "ACTION",
+      "HACK_AND_SLASH",
+      "ROLE_PLAYING"
+    ],
+    "estimatedHours": 34,
+    "releaseDate": "2000-06-28",
+    "nominations": [
+      {
+        "awards": "Guinness book of world records",
+        "category": "Fastest selling computer game ever sold",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Game of the year",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Computer game of the year",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Computer role playing game of the year",
+        "won": true
+      }
+    ],
+    "multiplayer": true
+  },
+  {
+    "title": "Horizon Zero dawn",
+    "developer": "Guerrilla games",
+    "platforms": [
+      "PlayStation 4"
+    ],
+    "genres": [
+      "ACTION",
+      "ADVENTURE",
+      "ROLE_PLAYING",
+      "SANDBOX",
+      "STEALTH"
+    ],
+    "estimatedHours": 22,
+    "releaseDate": "2017-02-28",
+    "nominations": [
+      {
+        "awards": "The game awards",
+        "category": "Game of the year",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best game direction",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best narrative",
+        "won": true
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best performance",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Most anticipated game",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best original property",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best performer",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Artistic achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Audio achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best game",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Game design",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best music",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best narrative",
+        "won": false
+      },
+      {
+        "awards": "Annie",
+        "category": "Outstanding achievement for character animation in a video game",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Tekken 3",
+    "developer": "Namco",
+    "platforms": [
+      "PlayStation X"
+    ],
+    "genres": [
+      "FIGHTING"
+    ],
+    "estimatedHours": 11,
+    "releaseDate": "1997-03-20",
+    "nominations": [
+      {
+        "awards": "Game critics awards",
+        "category": "Best fighting game",
+        "won": true
+      },
+      {
+        "awards": "Game informer",
+        "category": "Best fighting game of the year",
+        "won": true
+      }
+    ],
+    "multiplayer": true
+  },
+  {
+    "title": "Crash Bandicoot 3: Warped",
+    "developer": "Naughty Dog",
+    "platforms": [
+      "PlayStation X"
+    ],
+    "genres": [
+      "PLATFORM"
+    ],
+    "estimatedHours": 6,
+    "releaseDate": "1998-10-31",
+    "multiplayer": false
+  },
+  {
+    "title": "Spyro 2: Ripto's rage!",
+    "developer": "Insomniac games",
+    "platforms": [
+      "PlayStation X"
+    ],
+    "genres": [
+      "PLATFORM"
+    ],
+    "estimatedHours": 7,
+    "releaseDate": "1999-11-02",
+    "nominations": [
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Console children's/family title of the year",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in animation",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in art direction",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "NBA Live 2002",
+    "developer": "EA Sports",
+    "platforms": [
+      "PlayStation X",
+      "PlayStation 2",
+      "XBox"
+    ],
+    "genres": [
+      "SPORTS"
+    ],
+    "estimatedHours": 39,
+    "releaseDate": "2001-10-30",
+    "multiplayer": true
+  },
+  {
+    "title": "Counter-Strike",
+    "developer": "Sierra Studios",
+    "platforms": [
+      "Microsoft Windows",
+      "XBox"
+    ],
+    "genres": [
+      "SHOOTER"
+    ],
+    "estimatedHours": 100,
+    "releaseDate": "2000-11-09",
+    "nominations": [
+      {
+        "awards": "GameSpot",
+        "category": "Best multiplayer game",
+        "won": true
+      },
+      {
+        "awards": "GameSpot",
+        "category": "Action game of the year",
+        "won": true
+      }
+    ],
+    "multiplayer": true
+  },
+  {
+    "title": "Medal of honor: Underground",
+    "developer": "Electronic Arts",
+    "platforms": [
+      "PlayStation X",
+      "GameBoy Advance"
+    ],
+    "genres": [
+      "SHOOTER"
+    ],
+    "estimatedHours": 11,
+    "releaseDate": "2000-10-23",
+    "nominations": [
+      {
+        "awards": "GameSpot",
+        "category": "Best sound",
+        "won": false
+      },
+      {
+        "awards": "GameSpot",
+        "category": "Best shooter",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding sound design",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding original music composition",
+        "won": true
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Little nightmares",
+    "developer": "Namco",
+    "platforms": [
+      "PlayStation 4",
+      "XBox One",
+      "Nintendo switch",
+      "Android",
+      "Google Stadia",
+      "iOS",
+      "Microsoft Windows"
+    ],
+    "genres": [
+      "HORROR",
+      "INDIE",
+      "PUZZLE",
+      "STEALTH"
+    ],
+    "estimatedHours": 5,
+    "releaseDate": "2017-04-28",
+    "nominations": [
+      {
+        "awards": "IGN",
+        "category": "Best platformer",
+        "won": false
+      },
+      {
+        "awards": "IGN",
+        "category": "Best art direction",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "The last guardian",
+    "developer": "Japan Studio",
+    "platforms": [
+      "PlayStation 4"
+    ],
+    "genres": [
+      "ACTION",
+      "ADVENTURE"
+    ],
+    "estimatedHours": 12,
+    "releaseDate": "2016-12-06",
+    "nominations": [
+      {
+        "awards": "The game awards",
+        "category": "Most anticipated game",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Audio achievement",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best music",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Artistic achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best original property",
+        "won": false
+      },
+      {
+        "awards": "Empire",
+        "category": "Best video game",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Final Fantasy X",
+    "developer": "Square Enix",
+    "platforms": [
+      "PlayStation 2"
+    ],
+    "genres": [
+      "ROLE_PLAYING"
+    ],
+    "estimatedHours": 46,
+    "releaseDate": "2001-07-19",
+    "nominations": [
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Console role playing game of the year",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in animation",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Interactivity",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Final Fantasy XV",
+    "developer": "Square Enix",
+    "platforms": [
+      "PlayStation 4",
+      "XBox One",
+      "Microsoft Windows",
+      "Google Stadia"
+    ],
+    "genres": [
+      "ROLE_PLAYING",
+      "SANDBOX"
+    ],
+    "estimatedHours": 28,
+    "releaseDate": "2016-11-29",
+    "nominations": [
+      {
+        "awards": "The game awards",
+        "category": "Best role playing game",
+        "won": false
+      },
+      {
+        "awards": "IGN",
+        "category": "Best RPG",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Evolving game",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Red Dead Redemption 2",
+    "developer": "Rockstar",
+    "platforms": [
+      "PlayStation 4",
+      "XBox One",
+      "Microsoft Windows",
+      "Google Stadia"
+    ],
+    "genres": [
+      "ACTION",
+      "ADVENTURE"
+    ],
+    "estimatedHours": 50,
+    "releaseDate": "2018-10-26",
+    "nominations": [
+      {
+        "awards": "The game awards",
+        "category": "Best performance",
+        "won": true
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best narrative",
+        "won": true
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best score and music",
+        "won": true
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best audio design",
+        "won": true
+      },
+      {
+        "awards": "The game awards",
+        "category": "Most anticipated game",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Game of the year",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best action/adventure game",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best art direction",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Game game direction",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best game",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Artistic achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Audio achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best narrative",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best performer",
+        "won": false
+      }
+    ],
+    "multiplayer": true
+  },
+  {
+    "title": "Batman: Arkham knight",
+    "developer": "Rocksteady Studios",
+    "platforms": [
+      "PlayStation 4",
+      "XBox One",
+      "Microsoft Windows"
+    ],
+    "genres": [
+      "ACTION",
+      "ADVENTURE",
+      "SANDBOX",
+      "STEALTH"
+    ],
+    "estimatedHours": 16,
+    "releaseDate": "2015-06-23",
+    "nominations": [
+      {
+        "awards": "BAFTA",
+        "category": "Best game",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Artistic achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Audio achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best music",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best performer",
+        "won": false
+      },
+      {
+        "awards": "Empire",
+        "category": "Best video gane",
+        "won": true
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best action/adventure game",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best art direction",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best performance",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Most anticipated game",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Assassin's Creed: Origins",
+    "developer": "Ubisoft",
+    "platforms": [
+      "PlayStation 4",
+      "XBox One",
+      "Microsoft Windows",
+      "Google Stadia"
+    ],
+    "genres": [
+      "ACTION",
+      "ROLE_PLAYING",
+      "SANDBOX",
+      "STEALTH"
+    ],
+    "estimatedHours": 30,
+    "releaseDate": "2017-10-27",
+    "nominations": [
+      {
+        "awards": "The game awards",
+        "category": "Best action/adventure game",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best game",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Game design",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best performer",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Assassin's Creed: Syndicate",
+    "developer": "Ubisoft",
+    "platforms": [
+      "PlayStation 4",
+      "XBox One",
+      "Microsoft Windows",
+      "Google Stadia"
+    ],
+    "genres": [
+      "ACTION",
+      "ROLE_PLAYING",
+      "SANDBOX",
+      "STEALTH"
+    ],
+    "estimatedHours": 30,
+    "releaseDate": "2017-10-27",
+    "nominations": [
+      {
+        "awards": "BAFTA",
+        "category": "Artistic achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Audio achievement",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best music",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in animation",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in character",
+        "won": false
+      },
+      {
+        "awards": "International Film Music Critics Award",
+        "category": "Best original score for a video game or interactive media",
+        "won": true
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Watchdogs",
+    "developer": "Ubisoft",
+    "platforms": [
+      "PlayStation 4",
+      "PlayStation 3",
+      "XBox One",
+      "XBox 360",
+      "Microsoft Windows"
+    ],
+    "genres": [
+      "ACTION",
+      "ADVENTURE",
+      "ROLE_PLAYING",
+      "SANDBOX",
+      "STEALTH"
+    ],
+    "estimatedHours": 20,
+    "releaseDate": "2014-05-27",
+    "multiplayer": true
+  },
+  {
+    "title": "Journey",
+    "developer": "Thatgamecompany",
+    "platforms": [
+      "PlayStation 4",
+      "PlayStation 3",
+      "Microsoft Windows",
+      "iOS"
+    ],
+    "genres": [
+      "ADVENTURE",
+      "INDIE"
+    ],
+    "estimatedHours": 2,
+    "releaseDate": "2012-03-13",
+    "nominations": [
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in original music composition",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in art direction",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in game direction",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in gameplay engineering",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in online gameplay",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in sound design",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in story",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding innovation in gaming",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Best Song in a Game",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Game of the year",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Downloadable game of the year",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Casual game of the year",
+        "won": true
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in original music composition",
+        "won": true
+      },
+      {
+        "awards": "Annie",
+        "category": "Best animated video game",
+        "won": true
+      },
+      {
+        "awards": "Grammy awards",
+        "category": "Best score soundtrack for visual media",
+        "won": false
+      },
+      {
+        "awards": "International Film Music Critics Award",
+        "category": "Best original score for a video game or interactive media",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best original music",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Audio achievement",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Artistic achievement",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Game design",
+        "won": true
+      }
+    ],
+    "multiplayer": true
+  },
+  {
+    "title": "Middle-earth: Shadows of Mordor",
+    "developer": "Monolith Productions",
+    "platforms": [
+      "PlayStation 4",
+      "PlayStation 3",
+      "XBox One",
+      "XBox 360",
+      "Microsoft Windows",
+      "Linux",
+      "OS X"
+    ],
+    "genres": [
+      "ACTION",
+      "ADVENTURE",
+      "SANDBOX",
+      "STEALTH"
+    ],
+    "estimatedHours": 15,
+    "releaseDate": "2014-09-30",
+    "nominations": [
+      {
+        "awards": "The game awards",
+        "category": "Game of the year",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best performance",
+        "won": false
+      },
+      {
+        "awards": "The game awards",
+        "category": "Best action/adventure game",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Best game",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Game design",
+        "won": true
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Game innovation",
+        "won": false
+      },
+      {
+        "awards": "BAFTA",
+        "category": "Music",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "Star Wars Knights of the Old Republic II: The Sith Lords",
+    "developer": "Obsidian Entertainment",
+    "platforms": [
+      "XBox",
+      "Microsoft Windows",
+      "Linux",
+      "OS X",
+      "Android",
+      "iOS",
+      "Nintendo Switch"
+    ],
+    "genres": [
+      "ROLE_PLAYING"
+    ],
+    "estimatedHours": 31,
+    "releaseDate": "2004-12-06",
+    "nominations": [
+      {
+        "awards": "Satellite",
+        "category": "Outstanding game based on a previous medium (film, TV, etc.)",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  },
+  {
+    "title": "The Sims 3",
+    "developer": "Maxis",
+    "platforms": [
+      "Microsoft Windows",
+      "Mac OS X",
+      "Android",
+      "BlackBerry OS",
+      "Windows Phone",
+      "iOS",
+      "PlayStation 3",
+      "XBox 360",
+      "Nintendo DS",
+      "N-Gage 2.0",
+      "Wii",
+      "Nintendo 3DS"
+    ],
+    "genres": [
+      "SIMULATION"
+    ],
+    "estimatedHours": 50,
+    "releaseDate": "2009-06-02",
+    "multiplayer": false
+  },
+  {
+    "title": "Metal Gear Solid",
+    "developer": "KCE Japan",
+    "platforms": [
+      "PlayStation X"
+    ],
+    "genres": [
+      "ACTION",
+      "ADVENTURE",
+      "STEALTH"
+    ],
+    "estimatedHours": 11,
+    "releaseDate": "1998-09-03",
+    "nominations": [
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Game of the year",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Console action game of the year",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in character or story development",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in interactive design",
+        "won": false
+      },
+      {
+        "awards": "Academy of Interactive Arts & Sciences, USA",
+        "category": "Outstanding achievement in software engineering",
+        "won": false
+      }
+    ],
+    "multiplayer": false
+  }
+]
