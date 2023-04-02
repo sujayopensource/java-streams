@@ -1,6 +1,8 @@
 package org.example;
 
 import lombok.extern.log4j.Log4j2;
+import org.example.dto.Genre;
+import org.example.dto.VideoGame;
 import org.example.utils.JsonHelper;
 import org.example.utils.LoggerHelper;
 
