@@ -1,80 +1,63 @@
 package org.example.utils;
 
-import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.Collection;
+import java.util.Objects;
 
 public class TextUtils {
 
-    public static String getListAsPrettyString(List<?> list) {
-        if (list == null) {
-            return StringUtils.EMPTY;
-        }
-        StringBuilder result = new StringBuilder();
-        boolean firstElement = true;
-        for (final Object element : list) {
-            assert element != null;
-            if (firstElement) {
-                result.append(StringUtils.capitalize(element.toString()));
-                firstElement = false;
-            } else {
-                result.append(" | ".concat(StringUtils.capitalize(element.toString())));
-            }
-        }
-        return result.toString();
+    public static String getCollectionAsPrettyString(final Collection<?> collection) {
+        return buildCollectionString(collection).toString();
     }
 
-    public static String getListAsPrettyList(List<?> list, final int indents) {
-        if (list == null) {
-            return StringUtils.EMPTY;
-        }
+    public static String getCollectionAsPrettyList(final Collection<?> collection, final int indents) {
+        return buildCollectionList(collection, indents).toString();
+    }
+
+    private static StringBuilder buildCollectionString(final Collection<?> collection) {
         StringBuilder result = new StringBuilder();
-        for (final Object element : list) {
-            assert element != null;
+        if (CollectionUtils.isEmpty(collection)) {
+            return result;
+        }
+        boolean firstElement = true;
+        for (final Object element : collection) {
+            if (Objects.isNull(element)) {
+                continue;
+            }
+            addElement(result, element, firstElement);
+            firstElement = false;
+        }
+        return result;
+    }
+
+    private static void addElement(final StringBuilder stringBuilder, final Object element, final boolean firstElement) {
+        if (BooleanUtils.isFalse(firstElement)) {
+            stringBuilder.append(" | ");
+        }
+        if (element instanceof Pair<?, ?> pair) {
+            stringBuilder.append(StringUtils.capitalize(pair.toString("%s [%s]")));
+        } else {
+            stringBuilder.append(StringUtils.capitalize(element.toString()));
+        }
+    }
+
+    private static StringBuilder buildCollectionList(final Collection<?> collection, final int indents) {
+        StringBuilder result = new StringBuilder();
+        if (CollectionUtils.isEmpty(collection)) {
+            return result;
+        }
+        for (final Object element : collection) {
+            if (Objects.isNull(element)) {
+                continue;
+            }
             result.append(System.lineSeparator());
             result.append("\t".repeat(Math.max(0, indents)));
             result.append(element);
         }
-        return result.toString();
-    }
-
-    public static String getSetAsPrettyString(Set<?> set) {
-        if (set == null) {
-            return StringUtils.EMPTY;
-        }
-        StringBuilder result = new StringBuilder();
-        boolean firstElement = true;
-        for (final Object element : set) {
-            assert element != null;
-            if (firstElement) {
-                result.append(StringUtils.capitalize(element.toString()));
-                firstElement = false;
-            } else {
-                result.append(" | ".concat(StringUtils.capitalize(element.toString())));
-            }
-        }
-        return result.toString();
-    }
-
-    public static String getMapAsPrettyString(Map<String, ?> map) {
-        if (MapUtils.isEmpty(map)) {
-            return StringUtils.EMPTY;
-        }
-        StringBuilder result = new StringBuilder();
-        boolean firstElement = true;
-        for (final Map.Entry<String, ?> element : map.entrySet()) {
-            assert element != null;
-            if (firstElement) {
-                firstElement = false;
-            } else {
-                result.append(" | ");
-            }
-            result.append(StringUtils.capitalize(element.getKey()))
-                    .append(" [" + element.getValue() + "]");
-        }
-        return result.toString();
+        return result;
     }
 }

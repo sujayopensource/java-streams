@@ -6,8 +6,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.example.utils.JsonHelper;
 import org.example.utils.LoggerHelper;
+import org.example.utils.MappingUtils;
 import org.example.utils.TextUtils;
 
+import java.time.Duration;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -18,7 +22,7 @@ public class Main {
 
     private static VideoGameRepository repository;
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 
         repository = new VideoGameRepository();
         repository.add(JsonHelper.readJsonArrayFile("src/main/resources/videogames.json", VideoGame.class));
@@ -32,7 +36,7 @@ public class Main {
         printVideoGamesByPlatform("Xbox One");
         printVideoGamesReleasedInYear(2017);
         printVideoGamesReleasedBeforeOrAfter(2000, 2018);
-        printAveragePlayingHours();
+        printAveragePlayingTime();
         printShortestGame();
         printMostAwardedGame();
         printMostAwardedGameByAwardLabel("The game awards");
@@ -46,7 +50,7 @@ public class Main {
     private static void printAllVideoGames() {
         StringBuilder stringBuilder = new StringBuilder("These are all the available video games:")
                 .append(System.lineSeparator())
-                .append(TextUtils.getListAsPrettyList(repository.getAll(), 0));
+                .append(TextUtils.getCollectionAsPrettyList(repository.getAll(), 0));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
@@ -66,7 +70,7 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder("These are all the video games of \"" + genre + "\" genre developed by \"" + developer + "\":")
                 .append(System.lineSeparator())
-                .append(TextUtils.getListAsPrettyString(result));
+                .append(TextUtils.getCollectionAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
@@ -77,14 +81,14 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder("These are all the \"" + genre + "\" genre video games:")
                 .append(System.lineSeparator())
-                .append(TextUtils.getListAsPrettyString(result));
+                .append(TextUtils.getCollectionAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
     private static void printFavouriteGenre() {
-        Optional<Map.Entry<Genre, Long>> result = repository.getFavouriteGenre();
+        Optional<Pair<Genre, Long>> result = repository.getFavouriteGenre();
         if (result.isPresent()) {
-            Map.Entry<Genre, Long> favouriteGenre = result.get();
+            Pair<Genre, Long> favouriteGenre = result.get();
             log.info("The most common genre is \"{}\" with {} game(s).{}",
                     favouriteGenre.getKey(),
                     favouriteGenre.getValue(),
@@ -101,7 +105,7 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder("These are all the games available in \"" + platform + "\" platform:")
                 .append(System.lineSeparator())
-                .append(TextUtils.getListAsPrettyString(result));
+                .append(TextUtils.getCollectionAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
@@ -111,7 +115,7 @@ public class Main {
             log.info("These are the less common platforms with just {} occurrence(s):{}{}{}",
                     result.getKey(),
                     System.lineSeparator(),
-                    TextUtils.getListAsPrettyString(result.getValue()),
+                    TextUtils.getCollectionAsPrettyString(result.getValue()),
                     System.lineSeparator());
         } else {
             log.info("No used platform found.{}", System.lineSeparator());
@@ -125,25 +129,31 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder("These are all the video games released in \"" + year + "\":")
                 .append(System.lineSeparator())
-                .append(TextUtils.getListAsPrettyString(result));
+                .append(TextUtils.getCollectionAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
     private static void printVideoGamesReleasedBeforeOrAfter(final int beforeYear, final int afterYear) {
         List<Pair<String, Integer>> result = repository.getReleasedBeforeOrAfter(beforeYear, afterYear).stream()
                 .map(videoGame -> Pair.of(videoGame.title(), videoGame.releaseDate().getYear()))
+                .sorted(Comparator.comparingInt(Pair::getValue))
                 .collect(Collectors.toList());
 
-        StringBuilder stringBuilder = new StringBuilder("These are all the video games released before \"" + beforeYear + "\" and after \"" + afterYear + "\":")
+        StringBuilder stringBuilder = new StringBuilder("These are all the video games released before \"" + beforeYear + "\" or after \"" + afterYear + "\":")
                 .append(System.lineSeparator())
-                .append(TextUtils.getListAsPrettyString(result));
+                .append(TextUtils.getCollectionAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
-    private static void printAveragePlayingHours() {
-        log.info("The average estimated playing time per game is {} hours.{}",
-                String.format("%.2f", repository.getAveragePlayingHours()),
-                System.lineSeparator());
+    private static void printAveragePlayingTime() {
+        Duration duration = repository.getAveragePlayingTime();
+        if (Duration.ZERO.equals(duration)) {
+            log.info("No game or estimated playing time found.");
+        } else {
+            log.info("The average estimated playing time per game is {} HH:mm:ss.{}",
+                    String.format("%02d:%02d:%02d", duration.toHours(), duration.toMinutesPart(), duration.toSecondsPart()),
+                    System.lineSeparator());
+        }
     }
 
     private static void printShortestGame() {
@@ -160,12 +170,16 @@ public class Main {
     }
 
     private static void printMostNominatedGames(final int limit) {
-        List<Pair<String, Integer>> result = repository.getMostNominatedGames(limit);
-        if (CollectionUtils.isNotEmpty(result)) {
+        Map<String, Integer> result = repository.getMostNominatedGames(limit);
+        List<Pair<String, Integer>> pairList = result.entrySet().stream()
+                .map(MappingUtils.mapEntryToPair())
+                .sorted(Collections.reverseOrder(Comparator.comparingInt(Pair::getValue)))
+                .toList();
+        if (CollectionUtils.isNotEmpty(pairList)) {
             log.info("This is the top {} most nominated games:{}{}{}",
                     limit,
                     System.lineSeparator(),
-                    TextUtils.getListAsPrettyString(result),
+                    TextUtils.getCollectionAsPrettyString(pairList),
                     System.lineSeparator());
         } else {
             log.info("No nominated game found.{}", System.lineSeparator());
@@ -173,9 +187,9 @@ public class Main {
     }
 
     private static void printMostAwardedGame() {
-        Optional<Map.Entry<String, Long>> result = repository.getMostAwardedGame();
+        Optional<Pair<String, Long>> result = repository.getMostAwardedGame();
         if (result.isPresent()) {
-            Map.Entry<String, Long> mostAwardedGame = result.get();
+            Pair<String, Long> mostAwardedGame = result.get();
             log.info("The most awarded game is \"{}\" with {} win(s).{}",
                     mostAwardedGame.getKey(),
                     mostAwardedGame.getValue(),
@@ -186,9 +200,9 @@ public class Main {
     }
 
     private static void printMostAwardedGameByAwardLabel(final String awardLabel) {
-        Optional<Map.Entry<String, Long>> result = repository.getMostAwardedGameByAwardLabel(awardLabel);
+        Optional<Pair<String, Long>> result = repository.getMostAwardedGameByAwardLabel(awardLabel);
         if (result.isPresent()) {
-            Map.Entry<String, Long> mostAwardedGame = result.get();
+            Pair<String, Long> mostAwardedGame = result.get();
             log.info("The most awarded game by \"{}\" is \"{}\" with {} win(s).{}",
                     awardLabel,
                     mostAwardedGame.getKey(),
@@ -217,9 +231,9 @@ public class Main {
                 .map(VideoGame::title)
                 .collect(Collectors.toList());
 
-        StringBuilder stringBuilder = new StringBuilder("These are all the multi player games:")
+        StringBuilder stringBuilder = new StringBuilder("These are all the multiplayer titles:")
                 .append(System.lineSeparator())
-                .append(TextUtils.getListAsPrettyString(result));
+                .append(TextUtils.getCollectionAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 }

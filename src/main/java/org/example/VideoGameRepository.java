@@ -2,8 +2,10 @@ package org.example;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.tuple.Pair;
+import org.example.utils.MappingUtils;
 import org.springframework.stereotype.Repository;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -11,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
@@ -73,14 +76,15 @@ public class VideoGameRepository {
                 .collect(Collectors.toList());
     }
 
-    public Optional<Map.Entry<Genre, Long>> getFavouriteGenre() {
+    public Optional<Pair<Genre, Long>> getFavouriteGenre() {
         return CollectionUtils.emptyIfNull(this.videoGames).stream()
                 .map(VideoGame::genres)
                 .flatMap(Set::stream)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
                 .stream()
-                .max(Map.Entry.comparingByValue());
+                .max(Map.Entry.comparingByValue())
+                .map(MappingUtils.mapEnumToPair());
     }
 
     public List<VideoGame> getByPlatform(final String platform) {
@@ -142,12 +146,15 @@ public class VideoGameRepository {
                 .orElseGet(() -> Pair.of(0L, Collections.emptyList()));
     }
 
-    public double getAveragePlayingHours() {
+    public Duration getAveragePlayingTime() {
         return CollectionUtils.emptyIfNull(this.videoGames).stream()
                 .map(VideoGame::estimatedHours)
-                .mapToInt(Integer::intValue)
+                .mapToLong(TimeUnit.HOURS::toMillis)
                 .average()
-                .orElse(0d);
+                .stream()
+                .mapToObj(average -> Duration.ofMillis((long) average))
+                .findFirst()
+                .orElse(Duration.ZERO);
     }
 
     public Optional<VideoGame> getShortestGame() {
@@ -155,22 +162,21 @@ public class VideoGameRepository {
                 .min(Comparator.comparing(VideoGame::estimatedHours));
     }
 
-    public List<Pair<String, Integer>> getMostNominatedGames(final int limit) {
-        Predicate<VideoGame> hasNominations = vg -> CollectionUtils.isNotEmpty(vg.nominations());
+    public Map<String, Integer> getMostNominatedGames(final int limit) {
+        Predicate<VideoGame> nominated = vg -> CollectionUtils.isNotEmpty(vg.nominations());
         ToIntFunction<VideoGame> nominationsCount = vg -> vg.nominations().size();
 
         return CollectionUtils.emptyIfNull(this.videoGames).stream()
-                .filter(hasNominations)
+                .filter(nominated)
                 .collect(Collectors.groupingBy(VideoGame::title, Collectors.summingInt(nominationsCount)))
                 .entrySet()
                 .stream()
                 .sorted(Collections.reverseOrder(Comparator.comparingLong(Map.Entry::getValue)))
                 .limit(limit)
-                .map(entry -> Pair.of(entry.getKey(), entry.getValue()))
-                .toList();
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    public Optional<Map.Entry<String, Long>> getMostAwardedGame() {
+    public Optional<Pair<String, Long>> getMostAwardedGame() {
         Predicate<VideoGame> awarded = vg -> CollectionUtils.emptyIfNull(vg.nominations()).stream()
                 .anyMatch(Nomination::won);
         ToLongFunction<VideoGame> wins = vg -> vg.nominations().stream()
@@ -182,10 +188,11 @@ public class VideoGameRepository {
                 .collect(Collectors.groupingBy(VideoGame::title, Collectors.summingLong(wins)))
                 .entrySet()
                 .stream()
-                .max(Map.Entry.comparingByValue());
+                .max(Map.Entry.comparingByValue())
+                .map(MappingUtils.mapEntryToPair());
     }
 
-    public Optional<Map.Entry<String, Long>> getMostAwardedGameByAwardLabel(final String awardLabel) {
+    public Optional<Pair<String, Long>> getMostAwardedGameByAwardLabel(final String awardLabel) {
         Predicate<VideoGame> awarded = vg -> CollectionUtils.emptyIfNull(vg.nominations()).stream()
                 .anyMatch(Nomination::won);
         Predicate<Nomination> awardedByLabel = nomination -> awardLabel.equalsIgnoreCase(nomination.awards());
@@ -199,7 +206,8 @@ public class VideoGameRepository {
                 .collect(Collectors.groupingBy(VideoGame::title, Collectors.summingLong(winsByAwardLabel)))
                 .entrySet()
                 .stream()
-                .max(Map.Entry.comparingByValue());
+                .max(Map.Entry.comparingByValue())
+                .map(MappingUtils.mapEntryToPair());
     }
 
     public Optional<VideoGame> getOldestMultiplayerToWinAnAward() {

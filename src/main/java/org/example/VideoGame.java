@@ -25,11 +25,11 @@ public record VideoGame(
         }
         return "Title: " + this.title
                 + "\n\tDeveloper: " + this.developer
-                + "\n\tPlatforms: " + TextUtils.getSetAsPrettyString(this.platforms)
-                + "\n\tGenres: " + TextUtils.getSetAsPrettyString(this.genres)
+                + "\n\tPlatforms: " + TextUtils.getCollectionAsPrettyString(this.platforms)
+                + "\n\tGenres: " + TextUtils.getCollectionAsPrettyString(this.genres)
                 + "\n\tEstimated length: " + this.estimatedHours + " hrs"
                 + "\n\tRelease date: " + this.releaseDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-                + "\n\tNominations: " + (CollectionUtils.isEmpty(this.nominations) ? "None" : TextUtils.getListAsPrettyList(this.nominations, 2))
+                + "\n\tNominations: " + (CollectionUtils.isEmpty(this.nominations) ? "None" : TextUtils.getCollectionAsPrettyList(this.nominations, 2))
                 + "\n\tMultiplayer: " + (this.multiplayer ? "Yes" : "No")
                 + "\n";
     }
