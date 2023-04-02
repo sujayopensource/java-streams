@@ -7,7 +7,7 @@ import org.example.utils.JsonHelper;
 import org.example.utils.LoggerHelper;
 
 @Log4j2
-public class Main {
+public class Application {
 
     private static VideoGameRepository repository;
 
@@ -33,7 +33,7 @@ public class Main {
         printMostNominatedGames(5);
         printLessCommonPlatforms();
 
-        LoggerHelper.shutDownLogs(Main.class);
+        LoggerHelper.shutDownLogs(Application.class);
     }
 
     private static void printAllVideoGames() {

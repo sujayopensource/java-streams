@@ -1,12 +1,10 @@
 package org.example;
 
 import org.example.dto.VideoGame;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
 public class VideoGameRepository {
 
     private final List<VideoGame> videoGames;
