@@ -72,8 +72,8 @@ public class TextUtils {
             } else {
                 result.append(" | ");
             }
-            result.append(StringUtils.capitalize(element.getKey()));
-            result.append(" [" + element.getValue() + "]");
+            result.append(StringUtils.capitalize(element.getKey()))
+                    .append(" [" + element.getValue() + "]");
         }
         return result.toString();
     }

@@ -126,16 +126,17 @@ public class VideoGameRepository {
                 .stream()
                 .min(Comparator.naturalOrder());
 
-        List<String> lessUsedPlatforms = CollectionUtils.emptyIfNull(this.videoGames).stream()
-                .map(VideoGame::platforms)
-                .flatMap(Set::stream)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet()
-                .stream()
-                .filter(entry -> entry.getValue().equals(minPlatformOccurrences.get()))
-                .map(Map.Entry::getKey)
-                .sorted()
-                .toList();
+        List<String> lessUsedPlatforms = minPlatformOccurrences.isEmpty() ? Collections.emptyList() :
+                CollectionUtils.emptyIfNull(this.videoGames).stream()
+                        .map(VideoGame::platforms)
+                        .flatMap(Set::stream)
+                        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                        .entrySet()
+                        .stream()
+                        .filter(entry -> entry.getValue().equals(minPlatformOccurrences.get()))
+                        .map(Map.Entry::getKey)
+                        .sorted()
+                        .toList();
 
         return minPlatformOccurrences.map(aLong -> Pair.of(aLong, lessUsedPlatforms))
                 .orElseGet(() -> Pair.of(0L, Collections.emptyList()));
