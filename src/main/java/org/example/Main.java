@@ -5,6 +5,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.example.utils.JsonHelper;
+import org.example.utils.LoggerHelper;
 import org.example.utils.TextUtils;
 
 import java.util.List;
@@ -38,6 +39,8 @@ public class Main {
         printOldestMultiplayerGameToWinAnAward();
         printMostNominatedGames(5);
         printLessCommonPlatforms();
+
+        LoggerHelper.shutDownLogs(Main.class);
     }
 
     private static void printAllVideoGames() {
