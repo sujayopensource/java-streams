@@ -7,11 +7,7 @@ import java.util.function.Function;
 
 public class MappingUtils {
 
-    public static <T> Function<Map.Entry<String, T>, Pair<String, T>> mapEntryToPair() {
-        return stringTEntry -> Pair.of(stringTEntry.getKey(), stringTEntry.getValue());
-    }
-
-    public static <E extends Enum, T> Function<Map.Entry<E, T>, Pair<E, T>> mapEnumToPair() {
+    public static <T, E> Function<Map.Entry<T, E>, Pair<T, E>> mapEntryToPair() {
         return stringTEntry -> Pair.of(stringTEntry.getKey(), stringTEntry.getValue());
     }
 }

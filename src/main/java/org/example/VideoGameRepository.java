@@ -84,7 +84,7 @@ public class VideoGameRepository {
                 .entrySet()
                 .stream()
                 .max(Map.Entry.comparingByValue())
-                .map(MappingUtils.mapEnumToPair());
+                .map(MappingUtils.mapEntryToPair());
     }
 
     public List<VideoGame> getByPlatform(final String platform) {
