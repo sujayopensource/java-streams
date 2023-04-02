@@ -7,34 +7,27 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.Collection;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class TextUtils {
 
-    public static String getCollectionAsPrettyString(final Collection<?> collection) {
-        return buildCollectionString(collection).toString();
-    }
-
-    public static String getCollectionAsPrettyList(final Collection<?> collection, final int indents) {
-        return buildCollectionList(collection, indents).toString();
-    }
-
-    private static StringBuilder buildCollectionString(final Collection<?> collection) {
-        StringBuilder result = new StringBuilder();
+    public static <T> String getAsPrettyString(final Collection<T> collection) {
+        StringBuilder stringBuilder = new StringBuilder();
         if (CollectionUtils.isEmpty(collection)) {
-            return result;
+            return StringUtils.EMPTY;
         }
         boolean firstElement = true;
-        for (final Object element : collection) {
+        for (final T element : collection) {
             if (Objects.isNull(element)) {
                 continue;
             }
-            addElement(result, element, firstElement);
+            append(element, stringBuilder, firstElement);
             firstElement = false;
         }
-        return result;
+        return stringBuilder.toString();
     }
 
-    private static void addElement(final StringBuilder stringBuilder, final Object element, final boolean firstElement) {
+    private static <T> void append(final T element, final StringBuilder stringBuilder, final boolean firstElement) {
         if (BooleanUtils.isFalse(firstElement)) {
             stringBuilder.append(" | ");
         }
@@ -45,19 +38,17 @@ public class TextUtils {
         }
     }
 
-    private static StringBuilder buildCollectionList(final Collection<?> collection, final int indents) {
-        StringBuilder result = new StringBuilder();
-        if (CollectionUtils.isEmpty(collection)) {
-            return result;
-        }
-        for (final Object element : collection) {
-            if (Objects.isNull(element)) {
-                continue;
-            }
-            result.append(System.lineSeparator());
-            result.append("\t".repeat(Math.max(0, indents)));
-            result.append(element);
-        }
-        return result;
+    public static <T> String getAsPrettyListString(final Collection<T> collection, final int indents) {
+        StringBuilder stringBuilder = new StringBuilder();
+        CollectionUtils.emptyIfNull(collection).stream()
+                .filter(Objects::nonNull)
+                .forEach(appendWithIndents(stringBuilder, indents));
+        return stringBuilder.toString();
+    }
+
+    private static <T> Consumer<T> appendWithIndents(final StringBuilder stringBuilder, final int indents) {
+        return element -> stringBuilder.append(System.lineSeparator())
+                .append("\t".repeat(Math.max(0, indents)))
+                .append(element);
     }
 }

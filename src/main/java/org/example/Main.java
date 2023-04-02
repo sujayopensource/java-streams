@@ -50,7 +50,7 @@ public class Main {
     private static void printAllVideoGames() {
         StringBuilder stringBuilder = new StringBuilder("These are all the available video games:")
                 .append(System.lineSeparator())
-                .append(TextUtils.getCollectionAsPrettyList(repository.getAll(), 0));
+                .append(TextUtils.getAsPrettyListString(repository.getAll(), 0));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
@@ -70,7 +70,7 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder("These are all the video games of \"" + genre + "\" genre developed by \"" + developer + "\":")
                 .append(System.lineSeparator())
-                .append(TextUtils.getCollectionAsPrettyString(result));
+                .append(TextUtils.getAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
@@ -81,7 +81,7 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder("These are all the \"" + genre + "\" genre video games:")
                 .append(System.lineSeparator())
-                .append(TextUtils.getCollectionAsPrettyString(result));
+                .append(TextUtils.getAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
@@ -105,7 +105,7 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder("These are all the games available in \"" + platform + "\" platform:")
                 .append(System.lineSeparator())
-                .append(TextUtils.getCollectionAsPrettyString(result));
+                .append(TextUtils.getAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
@@ -115,7 +115,7 @@ public class Main {
             log.info("These are the less common platforms with just {} occurrence(s):{}{}{}",
                     result.getKey(),
                     System.lineSeparator(),
-                    TextUtils.getCollectionAsPrettyString(result.getValue()),
+                    TextUtils.getAsPrettyString(result.getValue()),
                     System.lineSeparator());
         } else {
             log.info("No used platform found.{}", System.lineSeparator());
@@ -129,7 +129,7 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder("These are all the video games released in \"" + year + "\":")
                 .append(System.lineSeparator())
-                .append(TextUtils.getCollectionAsPrettyString(result));
+                .append(TextUtils.getAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
@@ -141,7 +141,7 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder("These are all the video games released before \"" + beforeYear + "\" or after \"" + afterYear + "\":")
                 .append(System.lineSeparator())
-                .append(TextUtils.getCollectionAsPrettyString(result));
+                .append(TextUtils.getAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
@@ -179,7 +179,7 @@ public class Main {
             log.info("This is the top {} most nominated games:{}{}{}",
                     limit,
                     System.lineSeparator(),
-                    TextUtils.getCollectionAsPrettyString(pairList),
+                    TextUtils.getAsPrettyString(pairList),
                     System.lineSeparator());
         } else {
             log.info("No nominated game found.{}", System.lineSeparator());
@@ -233,7 +233,7 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder("These are all the multiplayer titles:")
                 .append(System.lineSeparator())
-                .append(TextUtils.getCollectionAsPrettyString(result));
+                .append(TextUtils.getAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 }
