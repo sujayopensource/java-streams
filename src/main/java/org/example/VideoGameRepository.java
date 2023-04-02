@@ -2,8 +2,10 @@ package org.example;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.tuple.Pair;
+import org.example.dto.Genre;
+import org.example.dto.Nomination;
+import org.example.dto.VideoGame;
 import org.example.utils.MappingUtils;
-import org.springframework.stereotype.Repository;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -20,7 +22,6 @@ import java.util.function.ToIntFunction;
 import java.util.function.ToLongFunction;
 import java.util.stream.Collectors;
 
-@Repository
 public class VideoGameRepository {
 
     private final List<VideoGame> videoGames;

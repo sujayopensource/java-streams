@@ -1,4 +1,4 @@
-package org.example;
+package org.example.dto;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.example.utils.TextUtils;
