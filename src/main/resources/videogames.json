@@ -172,7 +172,7 @@
       },
       {
         "awards": "Empire",
-        "category": "Best video gane",
+        "category": "Best video game",
         "won": true
       },
       {
@@ -738,7 +738,7 @@
       "XBox 360",
       "Microsoft Windows",
       "Linux",
-      "OS X"
+      "Mac OS"
     ],
     "genres": [
       "ACTION",
@@ -1018,7 +1018,7 @@
       "XBox",
       "Microsoft Windows",
       "Linux",
-      "OS X",
+      "Mac OS",
       "Android",
       "iOS",
       "Nintendo Switch"
@@ -1137,7 +1137,7 @@
     "developer": "Maxis",
     "platforms": [
       "Microsoft Windows",
-      "Mac OS X",
+      "Mac OS",
       "Android",
       "BlackBerry OS",
       "Windows Phone",
@@ -1265,7 +1265,7 @@
     "title": "Tony Hawk's Pro Skater 3",
     "developer": "Neversoft",
     "platforms": [
-      "PlayStation",
+      "PlayStation X",
       "PlayStation 2",
       "GameBoy Color",
       "GameBoy Advance",

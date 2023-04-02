@@ -1,7 +1,9 @@
 package org.example;
 
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
 import org.example.utils.JsonHelper;
 import org.example.utils.TextUtils;
 
@@ -21,20 +23,21 @@ public class Main {
         repository.add(JsonHelper.readJsonArrayFile("src/main/resources/videogames.json", VideoGame.class));
 
         printAllVideoGames();
+        printMultiplayerGames();
         printVideoGameByTitle("Final Fantasy VII");
-        printVideoGamesByDeveloper("Square Enix");
-        printVideoGamesByGenre(Genre.ADVENTURE);
+        printVideoGamesByGenre(Genre.HACK_AND_SLASH);
+        printVideoGamesByGenreAndDeveloper(Genre.ROLE_PLAYING, "Square Enix");
         printFavouriteGenre();
         printVideoGamesByPlatform("Xbox One");
-        printFavouritePlatform();
         printVideoGamesReleasedInYear(2017);
-        printVideoGamesReleasedBeforeYear(2000);
+        printVideoGamesReleasedBeforeOrAfter(2000, 2018);
         printAveragePlayingHours();
         printShortestGame();
-        printMostNominatedGame();
         printMostAwardedGame();
         printMostAwardedGameByAwardLabel("The game awards");
-        printMultiplayerGames();
+        printOldestMultiplayerGameToWinAnAward();
+        printMostNominatedGames(5);
+        printLessCommonPlatforms();
     }
 
     private static void printAllVideoGames() {
@@ -53,12 +56,12 @@ public class Main {
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
-    private static void printVideoGamesByDeveloper(final String developer) {
-        List<String> result = repository.getByDeveloper(developer).stream()
+    private static void printVideoGamesByGenreAndDeveloper(final Genre genre, final String developer) {
+        List<String> result = repository.getByGenreAndDeveloper(genre, developer).stream()
                 .map(VideoGame::title)
                 .collect(Collectors.toList());
 
-        StringBuilder stringBuilder = new StringBuilder("These are all the video games developed by \"" + developer + "\":")
+        StringBuilder stringBuilder = new StringBuilder("These are all the video games of \"" + genre + "\" genre developed by \"" + developer + "\":")
                 .append(System.lineSeparator())
                 .append(TextUtils.getListAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
@@ -99,13 +102,13 @@ public class Main {
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
-    private static void printFavouritePlatform() {
-        Optional<Map.Entry<String, Long>> result = repository.getFavouritePlatform();
-        if (result.isPresent()) {
-            Map.Entry<String, Long> mostUsedPlatform = result.get();
-            log.info("The most common platform is \"{}\" with {} game(s).{}",
-                    mostUsedPlatform.getKey(),
-                    mostUsedPlatform.getValue(),
+    private static void printLessCommonPlatforms() {
+        Pair<Long, List<String>> result = repository.getLessCommonPlatforms();
+        if (result != null && result.getKey() > 0L) {
+            log.info("These are the less common platforms with just {} occurrence(s):{}{}{}",
+                    result.getKey(),
+                    System.lineSeparator(),
+                    TextUtils.getListAsPrettyString(result.getValue()),
                     System.lineSeparator());
         } else {
             log.info("No used platform found.{}", System.lineSeparator());
@@ -123,12 +126,12 @@ public class Main {
         log.info(stringBuilder.append(System.lineSeparator()));
     }
 
-    private static void printVideoGamesReleasedBeforeYear(final int year) {
-        List<String> result = repository.getReleasedBeforeYear(year).stream()
-                .map(VideoGame::title)
+    private static void printVideoGamesReleasedBeforeOrAfter(final int beforeYear, final int afterYear) {
+        List<Pair<String, Integer>> result = repository.getReleasedBeforeOrAfter(beforeYear, afterYear).stream()
+                .map(videoGame -> Pair.of(videoGame.title(), videoGame.releaseDate().getYear()))
                 .collect(Collectors.toList());
 
-        StringBuilder stringBuilder = new StringBuilder("These are all the video games released before \"" + (year + 1) + "\":")
+        StringBuilder stringBuilder = new StringBuilder("These are all the video games released before \"" + beforeYear + "\" and after \"" + afterYear + "\":")
                 .append(System.lineSeparator())
                 .append(TextUtils.getListAsPrettyString(result));
         log.info(stringBuilder.append(System.lineSeparator()));
@@ -144,7 +147,7 @@ public class Main {
         Optional<VideoGame> result = repository.getShortestGame();
         if (result.isPresent()) {
             VideoGame shortestGame = result.get();
-            log.info("\"{}\" is the shortest game based on the estimated playing hours: {} hrs.{}",
+            log.info("The shortest game based on the estimated playing hours is \"{}\" with {} hrs.{}",
                     shortestGame.title(),
                     shortestGame.estimatedHours(),
                     System.lineSeparator());
@@ -153,13 +156,13 @@ public class Main {
         }
     }
 
-    private static void printMostNominatedGame() {
-        Optional<Map.Entry<String, Integer>> result = repository.getMostNominatedGame();
-        if (result.isPresent()) {
-            Map.Entry<String, Integer> mostNominatedGame = result.get();
-            log.info("The most nominated game is \"{}\" with {} nomination(s).{}",
-                    mostNominatedGame.getKey(),
-                    mostNominatedGame.getValue(),
+    private static void printMostNominatedGames(final int limit) {
+        List<Pair<String, Integer>> result = repository.getMostNominatedGames(limit);
+        if (CollectionUtils.isNotEmpty(result)) {
+            log.info("This is the top {} most nominated games:{}{}{}",
+                    limit,
+                    System.lineSeparator(),
+                    TextUtils.getListAsPrettyString(result),
                     System.lineSeparator());
         } else {
             log.info("No nominated game found.{}", System.lineSeparator());
@@ -189,7 +192,20 @@ public class Main {
                     mostAwardedGame.getValue(),
                     System.lineSeparator());
         } else {
-            log.info("No  game awarded by {} found.{}", awardLabel, System.lineSeparator());
+            log.info("No game awarded by {} found.{}", awardLabel, System.lineSeparator());
+        }
+    }
+
+    private static void printOldestMultiplayerGameToWinAnAward() {
+        Optional<VideoGame> videoGame = repository.getOldestMultiplayerToWinAnAward();
+        if (videoGame.isPresent()) {
+            log.info("The oldest multiplayer video game to win an award is \"{}\" ({}).{}",
+                    videoGame.get().title(),
+                    videoGame.get().releaseDate().getYear(),
+                    System.lineSeparator()
+            );
+        } else {
+            log.info("No multiplayer awarded game found.");
         }
     }
 

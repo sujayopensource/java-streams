@@ -1,9 +1,11 @@
 package org.example;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -45,10 +47,20 @@ public class VideoGameRepository {
     }
 
     public List<VideoGame> getByDeveloper(final String developer) {
-        Predicate<VideoGame> samePublisher = videoGame -> developer.equalsIgnoreCase(videoGame.developer());
+        Predicate<VideoGame> sameDeveloper = videoGame -> developer.equalsIgnoreCase(videoGame.developer());
 
         return CollectionUtils.emptyIfNull(this.videoGames).stream()
-                .filter(samePublisher)
+                .filter(sameDeveloper)
+                .collect(Collectors.toList());
+    }
+
+    public List<VideoGame> getByGenreAndDeveloper(final Genre genre, final String developer) {
+        Predicate<VideoGame> sameDeveloper = videoGame -> developer.equalsIgnoreCase(videoGame.developer());
+        Predicate<VideoGame> sameGenre = videoGame -> CollectionUtils.emptyIfNull(videoGame.genres()).stream()
+                .anyMatch(genre::equals);
+
+        return CollectionUtils.emptyIfNull(this.videoGames).stream()
+                .filter(sameDeveloper.and(sameGenre))
                 .collect(Collectors.toList());
     }
 
@@ -96,14 +108,37 @@ public class VideoGameRepository {
                 .collect(Collectors.toList());
     }
 
-    public Optional<Map.Entry<String, Long>> getFavouritePlatform() {
+    public List<VideoGame> getReleasedBeforeOrAfter(final int beforeYear, final int afterYear) {
+        Predicate<VideoGame> releaseYearBeforeYear = videoGame -> videoGame.releaseDate().getYear() < beforeYear;
+        Predicate<VideoGame> releaseYearAfterYear = videoGame -> videoGame.releaseDate().getYear() >= afterYear;
+
         return CollectionUtils.emptyIfNull(this.videoGames).stream()
+                .filter(releaseYearBeforeYear.or(releaseYearAfterYear))
+                .collect(Collectors.toList());
+    }
+
+    public Pair<Long, List<String>> getLessCommonPlatforms() {
+        Optional<Long> minPlatformOccurrences = CollectionUtils.emptyIfNull(this.videoGames).stream()
+                .map(VideoGame::platforms)
+                .flatMap(Set::stream)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .values()
+                .stream()
+                .min(Comparator.naturalOrder());
+
+        List<String> lessUsedPlatforms = CollectionUtils.emptyIfNull(this.videoGames).stream()
                 .map(VideoGame::platforms)
                 .flatMap(Set::stream)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
                 .stream()
-                .max(Map.Entry.comparingByValue());
+                .filter(entry -> entry.getValue().equals(minPlatformOccurrences.get()))
+                .map(Map.Entry::getKey)
+                .sorted()
+                .toList();
+
+        return minPlatformOccurrences.map(aLong -> Pair.of(aLong, lessUsedPlatforms))
+                .orElseGet(() -> Pair.of(0L, Collections.emptyList()));
     }
 
     public double getAveragePlayingHours() {
@@ -119,7 +154,7 @@ public class VideoGameRepository {
                 .min(Comparator.comparing(VideoGame::estimatedHours));
     }
 
-    public Optional<Map.Entry<String, Integer>> getMostNominatedGame() {
+    public List<Pair<String, Integer>> getMostNominatedGames(final int limit) {
         Predicate<VideoGame> hasNominations = vg -> CollectionUtils.isNotEmpty(vg.nominations());
         ToIntFunction<VideoGame> nominationsCount = vg -> vg.nominations().size();
 
@@ -128,7 +163,10 @@ public class VideoGameRepository {
                 .collect(Collectors.groupingBy(VideoGame::title, Collectors.summingInt(nominationsCount)))
                 .entrySet()
                 .stream()
-                .max(Map.Entry.comparingByValue());
+                .sorted(Collections.reverseOrder(Comparator.comparingLong(Map.Entry::getValue)))
+                .limit(limit)
+                .map(entry -> Pair.of(entry.getKey(), entry.getValue()))
+                .toList();
     }
 
     public Optional<Map.Entry<String, Long>> getMostAwardedGame() {
@@ -161,6 +199,16 @@ public class VideoGameRepository {
                 .entrySet()
                 .stream()
                 .max(Map.Entry.comparingByValue());
+    }
+
+    public Optional<VideoGame> getOldestMultiplayerToWinAnAward() {
+        Predicate<VideoGame> awardWinner = videoGame -> CollectionUtils.emptyIfNull(videoGame.nominations()).stream()
+                .anyMatch(Nomination::won);
+
+        return CollectionUtils.emptyIfNull(this.videoGames).stream()
+                .filter(VideoGame::multiplayer)
+                .filter(awardWinner)
+                .min(Comparator.comparingInt(videoGame -> videoGame.releaseDate().getYear()));
     }
 
     public List<VideoGame> getMultiplayerGames() {

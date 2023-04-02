@@ -1,8 +1,10 @@
 package org.example.utils;
 
+import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class TextUtils {
@@ -13,7 +15,7 @@ public class TextUtils {
         }
         StringBuilder result = new StringBuilder();
         boolean firstElement = true;
-        for (Object element : list) {
+        for (final Object element : list) {
             assert element != null;
             if (firstElement) {
                 result.append(StringUtils.capitalize(element.toString()));
@@ -30,7 +32,7 @@ public class TextUtils {
             return StringUtils.EMPTY;
         }
         StringBuilder result = new StringBuilder();
-        for (Object element : list) {
+        for (final Object element : list) {
             assert element != null;
             result.append(System.lineSeparator());
             result.append("\t".repeat(Math.max(0, indents)));
@@ -45,7 +47,7 @@ public class TextUtils {
         }
         StringBuilder result = new StringBuilder();
         boolean firstElement = true;
-        for (Object element : set) {
+        for (final Object element : set) {
             assert element != null;
             if (firstElement) {
                 result.append(StringUtils.capitalize(element.toString()));
@@ -53,6 +55,25 @@ public class TextUtils {
             } else {
                 result.append(" | ".concat(StringUtils.capitalize(element.toString())));
             }
+        }
+        return result.toString();
+    }
+
+    public static String getMapAsPrettyString(Map<String, ?> map) {
+        if (MapUtils.isEmpty(map)) {
+            return StringUtils.EMPTY;
+        }
+        StringBuilder result = new StringBuilder();
+        boolean firstElement = true;
+        for (final Map.Entry<String, ?> element : map.entrySet()) {
+            assert element != null;
+            if (firstElement) {
+                firstElement = false;
+            } else {
+                result.append(" | ");
+            }
+            result.append(StringUtils.capitalize(element.getKey()));
+            result.append(" [" + element.getValue() + "]");
         }
         return result.toString();
     }
